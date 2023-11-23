@@ -27,9 +27,6 @@
             <li><a href="./contactUs.html">Contact</a></li>
             <li><a href="./login.html" id="login">Login</a></li>
           </ul>
-          <span id="uName"></span>
-        
-
          <!-- <span id="btn-signin" class="material-symbols-outlined">menu</span> -->
         </nav>
      
@@ -62,18 +59,24 @@
 
 
       <script>
-        //---------------login
          document.addEventListener("DOMContentLoaded", function () {
-        var currentName=localStorage.getItem("currentName")
-        var login=localStorage.getItem("login")
-        var username=$("#uName").text(currentName);
-       
+          var currentName=localStorage.getItem("currentName")
+          var login=localStorage.getItem("login")
+          var lastChild = $('.menu-links li:last').append('<span id="name">'+currentName +'</span>')
+        
+        //css to the element
+          $('#name').css({
+            'font-size': '18px',
+             'color': 'red',
+             'margin-left': '50px',
+             'font-weight': 'bold'
+            });
 
-        if  (login=="true"){
+          if  (login=="true"){
 
-        var loginL= $("#login").text("Log out");
+           var loginL= $("#login").text("Log out");
            
-        $("#login").on("click", () => {
+           $("#login").on("click", () => {
         //avoid the normal behavior of the event <a> to go the login    
         event.preventDefault();
         localStorage.setItem("login", "false");
@@ -89,7 +92,7 @@
 
         var signinBtn = $("#btn-signin");
         
-         $("#btn-signin").on("click", () => {
+     $("#btn-signin").on("click", () => {
             // Redirect to the login.html page
             window.location.href = "./login.html";
           });
@@ -100,50 +103,12 @@
         
         
         localStorage.setItem('login', 'false');
-        }
-
-
-        var totalUsers = parseInt(localStorage.getItem('counter')) || 0;
-        
-        // Iterate over the stored users
-        for (var i = 0; i < totalUsers; i++) {
-            // Get the data for the current user
-            var storedData = JSON.parse(localStorage.getItem('data' + i));
-        
-            // Check if the data exists and if the username and password match
-            if (storedData && 'user1' != storedData.userName && 'passAdmin01#' != storedData.password) {
-
-              var data = {
-           name: nameLogin,
-           userName: newUsername,
-           password: newPassword
-          };
-          
-          // Use the current value of 'i' as part of the key in localStorage
-          localStorage.setItem("data" + i, JSON.stringify(data));
-          
-          // Increment 'i' for the next time
-          i++;
-          
-          // Save the new value of 'i' in localStorage
-          localStorage.setItem('counter', i);
-
-
-
-            }
-
-
-
-
+}
 
        
 
-      }
-    })
-    
-        //---------------login
+      });
       </script>
-      
       <br/>
 
 
