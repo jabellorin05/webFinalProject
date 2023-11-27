@@ -5,6 +5,10 @@
 //Pregunta actual
 function Login()
 {
+    var storedUser = localStorage.getItem('currentName');
+    console.log(storedUser);
+    if (storedUser!="")
+    {
     var cache = sessionStorage
     cache.clear();
     cache.setItem('questionsArray', JSON.stringify(PrepareQuestionnaire()));
@@ -12,6 +16,7 @@ function Login()
     cache.setItem("minQuestion", 1);
     cache.setItem("maxQuestion", 11);
     DisplayQuestion();
+    }
 }
 
 function updateArray()
@@ -362,88 +367,106 @@ function showColorResults() {
 
     // Aquí necesitas el contenido HTML de las páginas de colores
     var colorContent = {
-        'Orange': `<div>
-        <div>
-            <h2 style="color:orange;">Are you…Orange?</h2>
-            <h4>Witty…Charming…Spontaneous?</h4>
-            <h4>Impulsive…Generous…Impactful?</h4>
-            <h4>Optimistic…Eager…Bold?</h4>
-            <h4>Physical…Immediate…Courageous?</h4>
-        </div>
-        <div>
-            <p>At school…
-                I learn by doing and experiencing, rather than by listening and reading.
-                I like being physically involved in the learning process and am motivated by my 
-                own natural competitive self and sense of fun.
-                I am a natural performer.
-                I like doing tasks that allow me to be independent and free.<br><br><br>
-            </p>
-        </div>
-    </div>`, // Reemplaza con el contenido real
+        'Orange': `<section class="orange-section">
+        <div class="orange-div">
+          <div>
+            <div class="orange-color"><h2>  Are you…</h2> <h1>Orange?</h1></div>
+            <br/>
+            <h4>    Witty…Charming…Spontaneous?   <br/>  <br/>  
+                    Impulsive…Generous…Impactful?   <br/>  <br/>   
+                    Optimistic…Eager…Bold?   <br/>   <br/>         
+                    Physical…Immediate…Courageous?  </h4>
+          </div>
+          <br/><br/><br/>
+          <div>
+              <h2>At school… <br/></h2>
+              <p> I learn by doing and experiencing, rather than by listening and reading.
+                  I like being physically involved in the learning process and am motivated by my. 
+                  own natural competitive self and sense of fun.
+                  I am a natural performer.
+                  I like doing tasks that allow me to be independent and free
+              </p>
+          </div>
+          
+      </div>
+      </section>`, // Reemplaza con el contenido real
         
-        'Green': `<div> 
-        <div> 
-        <h2 style="color:green;">Are you…Green?</h2>
-        <h4>Analytical…Global…Conceptual?</h4>
-        <h4>Cool…Calm…Collected?</h4>
-        <h4>Inventive…Logical…Problem Solver?</h4>
-        <h4>Abstract…Creative…Investigative?</h4>
-    </div>
-    <div>
-        <p>
-            At school…
-            I am conceptual and am an independent thinker.
-            For me, work is play.
-            I am drawn to constant challenge.
-            I like to develop models and explore ideas
-            </p>
-        </div>
-    </div>`,
+        'Green': `<section class="green-section">
+        <div class="green-div">
+          <div>
+            <div class="green-color"><h2>  Are you…</h2> <h1>Green?</h1></div>
+            <br/>
+            <h4>    Analytical…Global…Conceptual?   <br/>  <br/>  
+                Cool…Calm…Collected?   <br/>  <br/>   
+                Inventive…Logical…Problem Solver?   <br/>   <br/>         
+                Abstract…Creative…Investigative?  </h4>
+          </div>
+          <br/><br/><br/>
+          <div>
+              <h2>At school… <br/></h2>
+              <p> I am conceptual and am an independent thinker.
+                For me, work is play.
+                I am drawn to constant challenge.
+                I like to develop models and explore ideas
+              </p>
+          </div>
+          
+      </div>
+      </section>`,
         
-        'Blue': `<div>  <div>
-        <h2 style="color: blue;">Are you…Blue?</h2>
-        <h4>Enthusiastic…Sympathetic…Personal?</h4>
-        <h4>Warm…Communicative…Compassionate?</h4>
-        <h4>Idealistic…Spiritual…Sincere?</h4>
-        <h4>Peaceful…Flexible…Imaginative?</h4>
-    </div>
-    <div>
-        At school…
-            I have a strong desire to be a role model for my classmates.<br>
-            I am skilled at motivating and interacting with others - I make friends easily 
-            and like having friends.<br>
-            I respond well to encouragement rather than competition.<br>
-            I like being artistic, communicating with people, and helping people
-            </p>
-        </div>
-    </div>`,
+        'Blue': ` <section class="blue-section">
+        <div class="blue-div">
+          <div>
+            <div class="blue-color"><h2>  Are you…</h2> <h1>Blue?</h1></div>
+            <br/>
+            <h4>    Enthusiastic…Sympathetic…Personal?   <br/>  <br/>  
+                    Warm…Communicative…Compassionate?   <br/>  <br/>   
+                    Idealistic…Spiritual…Sincere?   <br/>   <br/>         
+                    Peaceful…Flexible…Imaginative?  </h4>
+          </div>
+          <br/><br/><br/>
+          <div>
+              <h2>At school… <br/></h2>
+              <p>  I have a strong desire to be a role model for my classmates.
+                I am skilled at motivating and interacting with others – I make friends easily 
+                and like having friends.
+                I respond well to encouragement rather than competition.
+                I like being artistic, communicating with people, and helping people
+              </p>
+          </div>
+          
+      </div>
+      </section>`,
         
-        'Gold': `<div>
-        <div>
-        <h2 style="color:gold;">Are you…Gold?</h2>
-        <h4>Loyal…Dependable…Prepared?</h4>
-        <h4>Thorough…Sensible…Punctual?</h4>
-        <h4>Faithful…Stable…Organized?</h4>
-        <h4>Caring…Concerned…Helper?</h4>
-    </div>
-    <div>
-        <p>
-            At school…
-            I am stable and organized.
-            I am detailed oriented and predictable.
-            I believe that work comes before play, even if I must work overtime to 
-            complete the job.
-            I understand and respect authority and am comfortable with how school 
-            goes 
-            </p>
-        </div>
-    </div>`
+        'Gold': `<section class="gold-section">
+        <div class="gold-div">
+          <div>
+            <div class="gold-color"><h2>  Are you…</h2> <h1>Gold?</h1></div>
+            <br/>
+            <h4>    Loyal…Dependable…Prepared?  <br/>  <br/>  
+                Thorough…Sensible…Punctual?   <br/>  <br/>   
+                Faithful…Stable…Organized?   <br/>   <br/>         
+                Caring…Concerned…Helper?  </h4>
+          </div>
+          <br/><br/><br/>
+          <div>
+              <h2>At school… <br/></h2>
+              <p>  I am stable and organized.
+                I am detailed oriented and predictable.
+                I believe that work comes before play, even if I must work overtime to 
+                complete the job.
+                I understand and respect authority and am comfortable with how school 
+                goes 
+              </p>
+          </div>
+          
+      </div>
+      </section>`
     };
 
     // Abrir una nueva página
     var resultPage = window.open('', '_blank');
-    resultPage.document.write('<html><head><title>Your Top Colors</title></head><body>');
-    resultPage.document.write('<h1>Your Top Colors</h1>');
+    resultPage.document.write('<html lang="en-CA"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"><title>Colors</title></head><body>');
     resultPage.document.write(colorContent[topColors[0]]); // Insertar el contenido del primer color
     resultPage.document.write(colorContent[topColors[1]]); // Insertar el contenido del segundo color
     resultPage.document.write('</body></html>');

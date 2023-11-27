@@ -39,6 +39,7 @@
         </div>
 
         <button id="showResultsButton">Show your colors</button>
+        <button id="tryAgainButton">Try Again</button>
     </section>
 
     <script>DisplayResults()</script>
@@ -48,6 +49,19 @@
             document.getElementById("showResultsButton").addEventListener("click", showColorResults);
         });
     </script>
+
+    
+<script>
+//evento boton try again 
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("tryAgainButton").addEventListener("click", function() {
+        var confirmAction = confirm("All your current results will be lost and the test will restart. Are you sure you want to continue?");
+        if (confirmAction) {
+            window.location.href = 'questionnaire.html'; // Reemplaza con la URL correcta
+        }
+    });
+});</script>
+
     </section>
 </body>
 </html>

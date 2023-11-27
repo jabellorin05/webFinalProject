@@ -2,6 +2,11 @@
 
 login=false;
 
+function setInitialValues()
+{
+    localStorage.setItem("currentName", "");    
+}
+
 function getUsernameAndPassword() {
     username = $('#user').val();
     password = $('#password').val(); 
@@ -33,7 +38,7 @@ function validateLogin(username, password) {
         
             // Check if the data exists and if the username and password match
             if (storedData && inputUsername === storedData.userName && inputPassword === storedData.password) {
-               alert('Welcome ' + storedData.userName);
+                alert('Welcome ' + storedData.userName);
                find = true;
                setLogin("true")
                currentName = storedData.name;
@@ -207,6 +212,7 @@ function registerNewUser(){
 
     $("#login").text("Log out");
 
+   // var segundoElemento = $('#miLista li:eq(1)');
 
 
    }
